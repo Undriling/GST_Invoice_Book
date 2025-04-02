@@ -1,15 +1,14 @@
-// import './App.css'
-import Login from './components/login'
+import Index from "./components/home";
 
 function App() {
 
   return (
     <>
       <div>
-        <Login />
+        <Index />
       </div>
     </>
   )
 }
 
-export default App
+export default App;
