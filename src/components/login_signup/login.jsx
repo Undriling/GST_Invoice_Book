@@ -1,7 +1,8 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { auth } from "../../service/firebase";
+import { auth, db } from "../../service/firebase";
 import { useNavigate } from "react-router";
+import { doc, getDoc } from "firebase/firestore";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,21 +20,34 @@ const Login = () => {
     return () => unsubscribe();
   }, [navigate]);
 
-  const loginSubmitHandler = (e) => {
+  const loginSubmitHandler = async (e) => {
     e.preventDefault();
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        navigate("/home");
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      });
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password)
+
+      const user = userCredential.user
+      navigate("/home");
+      const userDoc = await getDoc(doc(db, 'users', user.uid))
+
+      if (userDoc.exists()) {
+        console.log("User Data", userDoc.data())
+      }
+      else {
+        console.log("No user Data Found!")
+      }
+        // })
+        // .catch((error) => {
+        //   const errorCode = error.code;
+        //   const errorMessage = error.message;
+        //   console.log(errorCode, errorMessage);
+        // });
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+    }
+
   };
 
   return (
@@ -68,7 +82,7 @@ const Login = () => {
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
-                className="w-full p-3 h-full border rounded-lg text-gray-700 font-bold focus:outline-none focus:ring-2 focus:ring-[#8046FD] bg-gray-300"
+                className="w-full p-3 h-full border-2 border-[#8046FD] rounded-lg text-gray-700 font-bold focus:outline-none bg-gray-300"
                 placeholder="Enter your email id."
                 required
               />
@@ -82,7 +96,7 @@ const Login = () => {
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                className="w-full p-3 border rounded-lg font-bold text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8046FD] bg-gray-300"
+                className="w-full p-3 h-full border-2 rounded-lg font-bold text-gray-700 focus:outline-none border-[#8046FD] bg-gray-300"
                 placeholder="Enter your password"
                 required
               />

@@ -10,6 +10,7 @@ import CreateInvoices from "./components/invoices/createInvoice/createInvoices.j
 import Home from "./components/home/home.jsx";
 import ClientsData from "./components/Clients/clientsData.jsx";
 import ProtectedRoute from "./components/login_signup/protectedRoute.jsx";
+import InvoiceDetails from "./components/invoices/invoiceDetails/invoiceDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: "viewinvoices", element: <ViewInvoices /> },
       { path: "createinvoice", element: <CreateInvoices /> },
       { path: "clientsdata", element: <ClientsData /> },
+      { path: "invoice-details", element: <InvoiceDetails /> },
     ]
   },
 ]);

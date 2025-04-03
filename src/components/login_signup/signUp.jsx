@@ -16,6 +16,11 @@ const SignUp = () => {
   const [file, setFile] = useState(null);
   const [otherTaxName, setOtherTaxName] = useState("");
   const [otherTaxNo, setOtherTaxNo] = useState("");
+  const [bankName, setBankName] = useState();
+  const [bankACNo, setBankACNo] = useState();
+  const [bankIfsc, setIfsc] = useState("");
+  const [bankACType, setBnakACType] = useState("");
+  const [upiId, setUpiId] = useState();
 
   const registerSubmitHandler = (e) => {
     e.preventDefault();
@@ -63,6 +68,13 @@ const SignUp = () => {
               gstNo: gstNo,
               otherTaxCategory: otherTaxName,
               otherTaxRegistrationNo: otherTaxNo,
+              bankDetails: {
+                bankName: bankName,
+                bankACNo: bankACNo,
+                bankIfsc: bankIfsc,
+                bankACType: bankACType,
+                upiId: upiId
+              },
               photoURL: downloadUrl,
             });
 
@@ -114,7 +126,7 @@ const SignUp = () => {
                 onChange={(e) => {
                   setDisplayName(e.target.value);
                 }}
-                className="w-full p-3 border rounded-lg text-gray-700 font-bold focus:outline-none focus:ring-2 focus:ring-[#8046FD] bg-gray-300"
+                className="w-full p-3 border-2 h-full rounded-lg text-gray-700 font-bold focus:outline-none border-[#8046FD] bg-gray-300"
                 placeholder="Enter your company name"
                 required
               />
@@ -128,7 +140,7 @@ const SignUp = () => {
                 onChange={(e) => {
                   setOwnerName(e.target.value);
                 }}
-                className="w-full p-3 border rounded-lg text-gray-700 font-bold focus:outline-none focus:ring-2 focus:ring-[#8046FD] bg-gray-300"
+                className="w-full p-3 border-2 h-full rounded-lg text-gray-700 font-bold focus:outline-none border-[#8046FD] bg-gray-300"
                 placeholder="Enter owner name"
                 required
               />
@@ -142,7 +154,7 @@ const SignUp = () => {
                 onChange={(e) => {
                   setGstNo(e.target.value);
                 }}
-                className="w-full p-3 border rounded-lg text-gray-700 font-bold focus:outline-none focus:ring-2 focus:ring-[#8046FD] bg-gray-300"
+                className="w-full p-3 border-2 h-full rounded-lg text-gray-700 font-bold focus:outline-none border-[#8046FD] bg-gray-300"
                 placeholder="Enter your GST No."
                 required
               />
@@ -156,7 +168,7 @@ const SignUp = () => {
                 onChange={(e) => {
                   setOtherTaxName(e.target.value);
                 }}
-                className="w-full p-3 mb-3 border rounded-lg text-gray-700 font-bold focus:outline-none focus:ring-2 focus:ring-[#8046FD] bg-gray-300"
+                className="w-full p-3 mb-3 border-2 h-full rounded-lg text-gray-700 font-bold focus:outline-none border-[#8046FD] bg-gray-300"
                 placeholder="Enter your tax category"
               />
               <input
@@ -164,10 +176,62 @@ const SignUp = () => {
                 onChange={(e) => {
                   setOtherTaxNo(e.target.value);
                 }}
-                className="w-full p-3 border rounded-lg text-gray-700 font-bold focus:outline-none focus:ring-2 focus:ring-[#8046FD] bg-gray-300"
+                className="w-full p-3 border-2 h-full rounded-lg text-gray-700 font-bold focus:outline-none border-[#8046FD] bg-gray-300"
                 placeholder="Enter your registration no."
               />
             </div>
+
+            {/* Bank Details */}
+            <div>
+              <label className="block font-bold pb-2">
+                Bank Details <span className="text-red-700">*</span>
+              </label>
+              <input
+                type="text"
+                onChange={(e) => {
+                  setBankName(e.target.value);
+                }}
+                className="w-full p-3 border-2 h-full rounded-lg text-gray-700 font-bold focus:outline-none border-[#8046FD] bg-gray-300"
+                placeholder="Enter Bank Name"
+                required
+              />
+              <input
+                type="number"
+                onChange={(e) => {
+                  setBankACNo(e.target.value);
+                }}
+                className="w-full p-3 my-3 border-2 h-full rounded-lg text-gray-700 font-bold focus:outline-none border-[#8046FD] bg-gray-300"
+                placeholder="Enter A/C No."
+                required
+              />
+              <input
+                type="text"
+                onChange={(e) => {
+                  setIfsc(e.target.value);
+                }}
+                className="w-full p-3 border-2 h-full rounded-lg text-gray-700 font-bold focus:outline-none border-[#8046FD] bg-gray-300"
+                placeholder="Enter IFSC Code"
+                required
+              />
+              <input
+                type="text"
+                onChange={(e) => {
+                  setBnakACType(e.target.value);
+                }}
+                className="w-full p-3 my-3 border-2 h-full rounded-lg text-gray-700 font-bold focus:outline-none border-[#8046FD] bg-gray-300"
+                placeholder="Enter A/C Type (Current / Savings)"
+                required
+              />
+              <input
+                type="text"
+                onChange={(e) => {
+                  setUpiId(e.target.value);
+                }}
+                className="w-full p-3 border-2 h-full rounded-lg text-gray-700 font-bold focus:outline-none border-[#8046FD] bg-gray-300"
+                placeholder="Enter UPI Id (If any)"
+              />
+            </div>
+
             <div>
               <label className="block font-bold pb-2">
                 Phone No. <span className="text-red-700">*</span>
@@ -177,7 +241,7 @@ const SignUp = () => {
                 onChange={(e) => {
                   setPhoneNo(e.target.value);
                 }}
-                className="w-full p-3 border rounded-lg text-gray-700 font-bold focus:outline-none focus:ring-2 focus:ring-[#8046FD] bg-gray-300"
+                className="w-full p-3 border-2 h-full rounded-lg text-gray-700 font-bold focus:outline-none border-[#8046FD] bg-gray-300"
                 placeholder="Enter your 10 digit phone no."
                 required
               />
@@ -191,7 +255,7 @@ const SignUp = () => {
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
-                className="w-full p-3 border rounded-lg text-gray-700 font-bold focus:outline-none focus:ring-2 focus:ring-[#8046FD] bg-gray-300"
+                className="w-full p-3 border-2 h-full rounded-lg text-gray-700 font-bold focus:outline-none border-[#8046FD] bg-gray-300"
                 placeholder="Enter your email"
                 required
               />
@@ -205,7 +269,7 @@ const SignUp = () => {
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                className="w-full p-3 border rounded-lg font-bold text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8046FD] bg-gray-300"
+                className="w-full p-3 border-2 h-full rounded-lg font-bold text-gray-700 focus:outline-none border-[#8046FD] bg-gray-300"
                 placeholder="Enter your password"
                 required
               />
@@ -219,7 +283,7 @@ const SignUp = () => {
                 onChange={(e) => {
                   setFile(e.target.files[0]);
                 }}
-                className="w-full cursor-pointer p-3 rounded-lg font-bold text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8046FD] bg-gray-300"
+                className="w-full cursor-pointer p-3 rounded-lg font-bold text-gray-700 focus:outline-none border-[#8046FD] bg-gray-300"
               />
             </div>
             <button

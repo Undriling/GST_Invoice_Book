@@ -1,0 +1,59 @@
+// import { useLocation } from "react-router";
+import InvoiceHeader from "./invoiceHeader";
+import InvoiceBankDetails from "./invoiceBankDetails";
+import InvoiceCustomerDetails from "./invoiceCustomerDetails";
+import InvoiceItemTable from "./invoiceItemTable";
+
+const InvoiceDetails = () => {
+//   const location = useLocation();
+//   const invoiceData = location.state?.invoice;
+
+//   if (!invoiceData) {
+//     return <p className="text-center text-lg">No invoice data found.</p>;
+//   }
+
+//   console.log("Invoice details", invoiceData);
+
+  return (
+    <>
+      {/* Print Button */}
+      <div className="mt-4 text-right flex justify-end">
+        <button className="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700">
+          Print Invoice
+        </button>
+      </div>
+
+      <div className="flex justify-center p-5 min-h-screen">
+        <div className="bg-white shadow-lg p-6 rounded-lg w-full max-w-3xl">
+          {/* Header */}
+          <InvoiceHeader />
+
+          {/* Customer Details */}
+          <InvoiceCustomerDetails />
+
+          <div className="mt-4">
+            {/* Product Table */}
+            <InvoiceItemTable />
+
+            {/* Bank Details */}
+            <InvoiceBankDetails />
+
+            {/* Seal & Signature */}
+            <div className="flex justify-between items-center mt-10">
+              <div>
+                <div className="border-t border-gray-500 w-40 mt-2"></div>
+                <p className="text-gray-600">Authorized Signatory</p>
+              </div>
+              <div>
+                <div className="border-t border-gray-500 w-40 mt-2"></div>
+                <p className="text-gray-600">Authorized Seal</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default InvoiceDetails;

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import LogoutButton from "../login_signup/logOutBtn";
+import { auth, db } from "../../service/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 // Navigation items
 const navItems = [
@@ -12,12 +14,13 @@ const navItems = [
   { icon: "CreditCard", label: "Payments", href: "/payments" },
   { icon: "PieChart", label: "Reports", href: "/reports" },
   { icon: "Settings", label: "Settings", href: "/settings" },
-  { icon: "LogOut", label: <LogoutButton/>, href: "/" },
+  { icon: "LogOut", label: <LogoutButton />, href: "/" },
 ];
 
 const Sidebaar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [userData, setUserData] = useState(null);
 
   // Check if screen is mobile
   const checkMobile = () => window.innerWidth < 768;
@@ -31,6 +34,22 @@ const Sidebaar = () => {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (auth.currentUser) {
+        const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+
+        if (userDoc.exists()) {
+          setUserData(userDoc.data());
+        } else {
+          console.log("No User Data Found SIDEBAAR");
+        }
+      }
+    };
+
+    fetchUserData();
   }, []);
 
   // Toggle sidebar
@@ -155,18 +174,39 @@ const Sidebaar = () => {
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
               {/* <span className="text-sm font-medium">US</span> */}
-              <img
-                src="/vite.svg"
-                alt="logo"
-                className="border-[1px] border-[#8046FD] bg-gray-300 rounded-full object-cover"
-              />
+              {userData ? (
+                <img
+                  src={userData.photoURL}
+                  alt="logo"
+                  className="border-[1px] border-[#8046FD] bg-gray-300 rounded-full object-cover"
+                />
+              ) : (
+                <img
+                  src="/vite.svg"
+                  alt="logo"
+                  className="border-[1px] border-[#8046FD] bg-gray-300 rounded-full object-cover"
+                />
+              )}
             </div>
             {(!collapsed || isMobile) && (
               <div className="flex-1">
-                <p className="text-sm font-medium">ABC Pvt Ltd</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  Manash Baruah
-                </p>
+                {userData ? (
+                  <>
+                    <p className="text-sm font-medium">
+                      {userData?.companyName}
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      {userData?.gstNo}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-sm font-medium">Mudra Bill.Pvt.Ltd</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      AS01ZC2367876V54
+                    </p>
+                  </>
+                )}
               </div>
             )}
           </div>
