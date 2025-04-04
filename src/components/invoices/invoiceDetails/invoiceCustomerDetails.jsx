@@ -1,13 +1,12 @@
 import React from "react";
-import { useLocation } from "react-router";
 
-const InvoiceCustomerDetails = () => {
-  const location = useLocation();
-  const invoiceData = location.state?.invoice;
+
+const InvoiceCustomerDetails = ({invoiceData}) => {
+
 
   return (
-    <div className="mt-4 text-gray-700">
-      <h2 className="font-extrabold text-lg">To,</h2>
+    <div className="mt-4 text-gray-700 customerDetails">
+      <h2 className="font-extrabold text-[17px]">To,</h2>
       <p>
         <strong>Name:</strong> {invoiceData?.customerDetails?.to}
       </p>
@@ -32,7 +31,7 @@ const InvoiceCustomerDetails = () => {
       )}
 
       {invoiceData?.customerDetails?.memoNo && (
-        <p>
+        <p className="memoNo">
           <strong>Memo No:</strong> {invoiceData?.customerDetails?.memoNo}
         </p>
       )}

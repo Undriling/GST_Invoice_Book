@@ -1,28 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { auth, db } from "../../../service/firebase";
-import { doc, getDoc } from "firebase/firestore";
-import { useLocation } from "react-router";
+import React from "react";
 
-const InvoiceHeader = () => {
-    const location = useLocation();
-  const [userData, setUserData] = useState(null);
-  const invoiceData = location.state?.invoice;
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      if (auth.currentUser) {
-        const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
-
-        if (userDoc.exists()) {
-          setUserData(userDoc.data());
-        } else {
-          console.log("No User Data Found SIDEBAAR");
-        }
-      }
-    };
-
-    fetchUserData();
-  }, []);
+const InvoiceHeader = ({invoiceData, userData}) => {
+    
 
   console.log("User Data details", userData);
   console.log("Invoice Data", invoiceData)
@@ -37,7 +16,7 @@ const InvoiceHeader = () => {
             alt="User"
             className="w-25 h-25 rounded-full"
           />
-          <div>
+          <div className="companyData">
             <h2 className="text-2xl font-bold">{userData?.companyName}</h2>
             <h3 className="text-[16px]">{userData?.gstNo}</h3>
             <p className="text-[15px]">
@@ -49,7 +28,7 @@ const InvoiceHeader = () => {
             <p className="text-[15px]">{userData?.phoneNumber}</p>
           </div>
         </div>
-        <div className="text-center">
+        <div className="text-center invoiceId">
           <p className="font-bold text-gray-700 text-2xl">INVOICE</p>
           <h4 className="text-[15px] text-gray-600">
             Invoice Id: {invoiceData?.id?.slice(0, 6)?.toUpperCase()}

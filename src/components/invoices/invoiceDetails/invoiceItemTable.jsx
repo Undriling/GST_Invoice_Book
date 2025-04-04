@@ -1,9 +1,7 @@
 import React from "react";
-import { useLocation } from "react-router";
 
-const InvoiceItemTable = () => {
-  const location = useLocation();
-  const invoiceData = location.state?.invoice;
+
+const InvoiceItemTable = ({invoiceData}) => {
 
   return (
     <>
