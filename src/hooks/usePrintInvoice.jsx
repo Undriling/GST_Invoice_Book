@@ -20,7 +20,7 @@ const usePrintInvoice = () => {
     doc.write(`
         <html>
           <head>
-            <title>Mudra Bill 💸</title>
+            <title>Mudra Billing System 💸</title>
             <style>
               
               @media print {
