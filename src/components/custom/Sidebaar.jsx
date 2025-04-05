@@ -13,7 +13,7 @@ const navItems = [
   { icon: "Package", label: "Create Invoice", href: "/home/createinvoice" },
   { icon: "CreditCard", label: "Payments", href: "/payments" },
   { icon: "PieChart", label: "Reports", href: "/reports" },
-  { icon: "Settings", label: "Settings", href: "/settings" },
+  { icon: "Settings", label: "Settings", href: "/home/settings" },
   { icon: "LogOut", label: <LogoutButton />, href: "/" },
 ];
 

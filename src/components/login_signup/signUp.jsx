@@ -6,7 +6,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router";
 
 const SignUp = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNo, setPhoneNo] = useState();
@@ -21,6 +21,12 @@ const SignUp = () => {
   const [bankIfsc, setIfsc] = useState("");
   const [bankACType, setBnakACType] = useState("");
   const [upiId, setUpiId] = useState();
+  const [imageUrl, setImageUrl] = useState(null);
+
+  const onSetImg = (e) => {
+    setFile(e.target.files[0]);
+    setImageUrl(URL.createObjectURL(e.target.files[0]));
+  };
 
   const registerSubmitHandler = (e) => {
     e.preventDefault();
@@ -73,12 +79,12 @@ const SignUp = () => {
                 bankACNo: bankACNo,
                 bankIfsc: bankIfsc,
                 bankACType: bankACType,
-                upiId: upiId
+                upiId: upiId,
               },
               photoURL: downloadUrl,
             });
 
-            navigate("/")
+            navigate("/");
           });
           console.log(res);
         });
@@ -274,21 +280,29 @@ const SignUp = () => {
                 required
               />
             </div>
-            <div className="">
+            <div className="mb-0">
               <label className="block font-bold pb-2 w-full justify-center items-center">
                 Logo (If any)
               </label>
               <input
                 type="file"
                 onChange={(e) => {
-                  setFile(e.target.files[0]);
+                  onSetImg(e);
                 }}
-                className="w-full cursor-pointer p-3 rounded-lg font-bold text-gray-700 focus:outline-none border-[#8046FD] bg-gray-300"
+                className="w-full p-3 rounded-lg font-bold text-gray-700 focus:outline-none border-[#8046FD] bg-gray-300 cursor-pointer"
               />
+
+              {imageUrl != null && (
+                <img
+                  src={imageUrl}
+                  alt="Preview Image"
+                  className="mt-2 rounded-md h-[100px] w-[150px]"
+                />
+              )}
             </div>
             <button
               type="submit"
-              className="w-full bg-[#8046FD] text-white p-3 rounded-lg hover:bg-blue-600 transition">
+              className="w-full bg-[#8046FD] text-white p-3 rounded-lg hover:bg-blue-600 transition mt-5">
               Sign Up
             </button>
           </form>

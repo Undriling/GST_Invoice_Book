@@ -1,0 +1,62 @@
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "../service/firebase";
+import UpdateInput from "./updateInput";
+import UpdateImg from "./updateImg";
+import EmailAndPassword from "./emailAndPassword/emailAndPassUpdate";
+
+const Settings = () => {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (auth.currentUser) {
+        const ref = doc(db, "users", auth.currentUser.uid);
+        const snap = await getDoc(ref);
+        if (snap.exists()) setUserData(snap.data());
+      }
+    };
+    fetchUser();
+  }, []);
+
+  if (!userData) return <div>Loading...</div>;
+
+  return (
+    <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow mt-10">
+      <h1 className="text-2xl font-semibold mb-6 text-center text-gray-700">Account Settings</h1>
+
+      {/* Profile Photo */}
+      <UpdateImg photoURL={userData?.photoURL} />
+
+      {/* Email & Password */}
+      <div className="mt-10">
+        <EmailAndPassword/>
+      </div>
+
+      <h2 className="text-xl font-semibold my-7 text-center">Other Details</h2>
+
+      {/* Phone Number */}
+      <UpdateInput label="Phone Number" field="phoneNumber" value={userData?.phoneNumber} />
+
+
+      {/* Email */}
+      {/* <UpdateInput label="Email" field="email" value={userData?.email} /> */}
+
+      {/* GST No */}
+      <UpdateInput label="GST Number" field="gstNo" value={userData?.gstNo} />
+
+      {/* Other Tax No */}
+      <UpdateInput label="Other Tax Category (If any)" field="otherTaxCategory" value={userData?.otherTaxCategory} />
+      <UpdateInput label="Other Tax Registration No." field="otherTaxRegistrationNo" value={userData?.otherTaxRegistrationNo} />
+
+      {/* Bank Details */}
+      <UpdateInput label="Bank Name" field="bankDetails.bankName" value={userData?.bankDetails?.bankName} />
+      <UpdateInput label="Account Number" field="bankDetails.bankACNo" value={userData?.bankDetails?.bankACNo} />
+      <UpdateInput label="Account Type" field="bankDetails.bankACType" value={userData?.bankDetails?.bankACType} />
+      <UpdateInput label="IFSC Code" field="bankDetails.bankIfsc" value={userData?.bankDetails?.bankIfsc} />
+      <UpdateInput label="UPI ID" field="bankDetails.upiId" value={userData?.bankDetails?.upiId} />
+    </div>
+  );
+};
+
+export default Settings;

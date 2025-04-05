@@ -11,6 +11,8 @@ import Home from "./components/home/home.jsx";
 import ClientsData from "./components/Clients/clientsData.jsx";
 import ProtectedRoute from "./components/login_signup/protectedRoute.jsx";
 import InvoiceDetails from "./components/invoices/invoiceDetails/invoiceDetails.jsx";
+import Settings from "./settings/settings.jsx";
+// import { Settings } from "lucide-react";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,7 @@ const router = createBrowserRouter([
       { path: "createinvoice", element: <CreateInvoices /> },
       { path: "clientsdata", element: <ClientsData /> },
       { path: "invoice-details", element: <InvoiceDetails /> },
+      { path: "settings", element: <Settings /> },
     ]
   },
 ]);

@@ -30,41 +30,41 @@ const InvoiceDetails = () => {
     fetchUserData();
   }, []);
 
-  
-
   if (!invoiceData) {
     return <p className="text-center text-lg">No invoice data found.</p>;
   }
 
-//   console.log("Invoice details", invoiceData);
+  //   console.log("Invoice details", invoiceData);
 
-console.log(handlePrint, "Clicked to Print")
-
+  console.log(handlePrint, "Clicked to Print");
 
   return (
     <>
       {/* Print Button */}
       <div className="mt-4 text-right flex justify-end">
-        <button onClick={() => handlePrint("printable-area")} className="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700">
+        <button
+          onClick={() => handlePrint("printable-area")}
+          className="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700 cursor-pointer">
           Print Invoice
         </button>
       </div>
 
       <div className="flex justify-center p-5 min-h-screen">
-        <div id="printable-area" className="bg-white shadow-lg p-6 rounded-lg w-full max-w-3xl">
+        <div
+          id="printable-area"
+          className="bg-white shadow-lg p-6 rounded-lg w-full max-w-3xl">
           {/* Header */}
-          <InvoiceHeader invoiceData={invoiceData} userData={userData}/>
-
+          <InvoiceHeader invoiceData={invoiceData} userData={userData} />
 
           {/* Customer Details */}
-          <InvoiceCustomerDetails invoiceData={invoiceData}/>
+          <InvoiceCustomerDetails invoiceData={invoiceData} />
 
           <div className="mt-4">
             {/* Product Table */}
-            <InvoiceItemTable invoiceData={invoiceData}/>
+            <InvoiceItemTable invoiceData={invoiceData} />
 
             {/* Bank Details */}
-            <InvoiceBankDetails userData={userData}/>
+            <InvoiceBankDetails userData={userData} />
 
             {/* Seal & Signature */}
             <div className="flex justify-between items-center mt-10 invoiceFooter">
