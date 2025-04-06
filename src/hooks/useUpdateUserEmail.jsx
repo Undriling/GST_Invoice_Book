@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { auth, db } from "../service/firebase";
+import { auth } from "../service/firebase";
 import {
   EmailAuthProvider,
   onAuthStateChanged,
   reauthenticateWithCredential,
   verifyBeforeUpdateEmail,
 } from "firebase/auth";
-import { doc, updateDoc } from "firebase/firestore";
+
 
 const useUserEmailUpdate = () => {
   const emailRef = useRef("");
@@ -22,6 +22,27 @@ const useUserEmailUpdate = () => {
     return unsubscribe;
   }, []);
 
+
+  
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const user = auth.currentUser;
+      if (user) {
+        await user.reload();
+        if (
+          emailRef.current &&
+          user.email === emailRef.current &&
+          user.emailVerified
+        ) {
+          clearInterval(interval);
+          window.location.reload(); 
+        }
+      }
+    }, 3000); 
+
+    return () => clearInterval(interval);
+  }, []);
+
   const updateUserEmail = async (newEmail, password) => {
     setLoading(true);
     setError("");
@@ -35,29 +56,14 @@ const useUserEmailUpdate = () => {
       const credential = EmailAuthProvider.credential(user.email, password);
       await reauthenticateWithCredential(user, credential);
 
-      // ✅ This sends a verification email to the new address.
+      
       await verifyBeforeUpdateEmail(user, newEmail);
 
       setSuccessMsg(
         "Verification link sent to new email. Please verify to complete the update."
       );
 
-      // ❗ DO NOT update Firestore yet — only after user verifies the email.
-
-      // ✅ Monitor Auth state to sync Firestore after email verification
-      // Poll every 3 seconds to detect if user has verified the new email
-      const poll = setInterval(async () => {
-        await user.reload();
-        if (user.emailVerified && user.email === newEmail) {
-          clearInterval(poll);
-
-          const userRef = doc(db, "users", user.uid);
-          await updateDoc(userRef, { email: newEmail });
-
-          setSuccessMsg("✅ Email updated in Firebase Auth and Firestore!");
-        }
-      }, 3000);
-
+      return { success: true };
 
     } catch (err) {
       console.error("Email update failed:", err);

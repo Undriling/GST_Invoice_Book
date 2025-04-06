@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../service/firebase";
+import toast from "react-hot-toast";
 
 const UpdateInput = ({ label, field, value }) => {
   const [input, setInput] = useState(value || "");
@@ -10,11 +11,15 @@ const UpdateInput = ({ label, field, value }) => {
     try {
       setLoading(true);
       const userRef = doc(db, "users", auth.currentUser.uid);
+      
       const fieldObj = field.includes(".")
         ? field.split(".").reduceRight((acc, curr) => ({ [curr]: acc }), input)
         : { [field]: input };
+
       await updateDoc(userRef, fieldObj);
-      alert(`${label} updated successfully`);
+
+      toast.success(`${label} updated successfully`);
+
     } catch (err) {
       console.error("Error updating field:", err);
     } finally {

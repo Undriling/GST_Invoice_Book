@@ -1,5 +1,6 @@
 import { updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
 import { auth } from "../service/firebase";
+import toast from "react-hot-toast";
 
 const useUpdateUserPassword = () => {
   const updateUserPassword = async (currentPassword, newPassword) => {
@@ -11,6 +12,10 @@ const useUpdateUserPassword = () => {
       await reauthenticateWithCredential(user, credential);
 
       await updatePassword(user, newPassword);
+
+      toast.success("Password updated successfully.")
+
+      await auth.signOut();
 
       return { success: true, message: "Password updated successfully." };
     } catch (error) {

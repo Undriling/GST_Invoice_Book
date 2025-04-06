@@ -35,12 +35,11 @@ const Settings = () => {
 
       <h2 className="text-xl font-semibold my-7 text-center">Other Details</h2>
 
+      {/*Public Email */}
+      <UpdateInput label="Public Email" field="email" value={userData?.email} />
+
       {/* Phone Number */}
       <UpdateInput label="Phone Number" field="phoneNumber" value={userData?.phoneNumber} />
-
-
-      {/* Email */}
-      {/* <UpdateInput label="Email" field="email" value={userData?.email} /> */}
 
       {/* GST No */}
       <UpdateInput label="GST Number" field="gstNo" value={userData?.gstNo} />

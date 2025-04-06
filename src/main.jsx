@@ -12,6 +12,7 @@ import ClientsData from "./components/Clients/clientsData.jsx";
 import ProtectedRoute from "./components/login_signup/protectedRoute.jsx";
 import InvoiceDetails from "./components/invoices/invoiceDetails/invoiceDetails.jsx";
 import Settings from "./settings/settings.jsx";
+import { Toaster } from "react-hot-toast";
 // import { Settings } from "lucide-react";
 
 const router = createBrowserRouter([
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <Toaster position="top-center" />
     <RouterProvider router={router} />
   </StrictMode>
 );

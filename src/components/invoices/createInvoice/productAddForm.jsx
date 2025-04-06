@@ -6,8 +6,8 @@ import { auth, db } from "../../../service/firebase";
 
 const ProductForm = () => {
   const navigate = useNavigate();
-  const [products, setProducts] = useState([]); // Store multiple products
-  const [total, setTotal] = useState(0); // Store total price
+  const [products, setProducts] = useState([]); 
+  const [total, setTotal] = useState(0); 
 
   const [customer, setCustomer] = useState({
     to: "",
@@ -36,6 +36,11 @@ const ProductForm = () => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
+  const updatedCustomer = {
+    ...customer,
+    paidBy: customer.paidBy.toUpperCase(),
+  };
+
   const addProduct = () => {
     const newProduct = {
       ...product,
@@ -55,14 +60,14 @@ const ProductForm = () => {
     console.log("Products:", products);
     const data = await addDoc(collection(db, "invoices"), {
       date: Timestamp.fromDate(new Date()),
-      customerDetails: customer,
+      customerDetails: updatedCustomer,
       productDetails: products,
       productsTotal: total,
       userId: auth.currentUser.uid,
     });
 
     await updateDoc(doc(db, "invoices", data.id), {
-      id: data.id, // Store document ID inside Firestore
+      id: data.id, 
     });
     console.log(data);
     navigate("/home/viewinvoices");

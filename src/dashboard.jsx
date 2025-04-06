@@ -1,7 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router";
-// import AppSidebar from "../custom/sidebar";
-import Sidebaar from "../custom/Sidebaar";
+import Sidebaar from "./components/custom/Sidebaar";
 
 
 const Dashboard = () => {

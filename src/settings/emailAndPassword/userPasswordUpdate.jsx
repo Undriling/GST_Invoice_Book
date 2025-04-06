@@ -1,8 +1,8 @@
 import { useState } from "react";
-import useUpdatePassword from "../../hooks/useUpdatePassword";
+import useUpdateUserPassword from "../../hooks/useUpdateUserPassword";
 
 const UserPasswordUpdate = () => {
-  const updatePassword = useUpdatePassword();
+  const updatePassword = useUpdateUserPassword();
 
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
