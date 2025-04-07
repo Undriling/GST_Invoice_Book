@@ -1,10 +1,8 @@
 import React from "react";
 
-const InvoiceHeader = ({invoiceData, userData}) => {
-    
-
+const InvoiceHeader = ({ invoiceData, userData }) => {
   console.log("User Data details", userData);
-  console.log("Invoice Data", invoiceData)
+  console.log("Invoice Data", invoiceData);
 
   return (
     <>
@@ -34,7 +32,8 @@ const InvoiceHeader = ({invoiceData, userData}) => {
             Invoice Id: {invoiceData?.id?.slice(0, 6)?.toUpperCase()}
           </h4>
           <h4 className="text-[15px] text-gray-600">
-            Date: {invoiceData?.date
+            Date:{" "}
+            {invoiceData?.date
               ? new Date(invoiceData?.date?.seconds * 1000).toLocaleDateString(
                   "en-IN",
                   {

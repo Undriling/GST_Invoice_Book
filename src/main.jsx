@@ -13,7 +13,8 @@ import ProtectedRoute from "./components/login_signup/protectedRoute.jsx";
 import InvoiceDetails from "./components/invoices/invoiceDetails/invoiceDetails.jsx";
 import Settings from "./settings/settings.jsx";
 import { Toaster } from "react-hot-toast";
-// import { Settings } from "lucide-react";
+import Employee from "./components/employeeData/employee.jsx";
+import Reports from "./components/reports/reports.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,13 +36,15 @@ const router = createBrowserRouter([
       { path: "clientsdata", element: <ClientsData /> },
       { path: "invoice-details", element: <InvoiceDetails /> },
       { path: "settings", element: <Settings /> },
+      { path: "employee-data", element: <Employee /> },
+      { path: "sales-reports", element: <Reports /> },
     ]
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Toaster position="top-center" />
+    <Toaster position="top-center"/>
     <RouterProvider router={router} />
   </StrictMode>
 );

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import LogoutButton from "../login_signup/logOutBtn";
-import { auth, db } from "../../service/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import useUserData from "../../hooks/useUserData";
 
 // Navigation items
 const navItems = [
@@ -12,15 +11,17 @@ const navItems = [
   { icon: "Users", label: "Clients", href: "/home/clientsdata" },
   { icon: "Package", label: "Create Invoice", href: "/home/createinvoice" },
   { icon: "CreditCard", label: "Payments", href: "/payments" },
-  { icon: "PieChart", label: "Reports", href: "/reports" },
+  { icon: "PieChart", label: "Reports", href: "/home/sales-reports" },
   { icon: "Settings", label: "Settings", href: "/home/settings" },
+  { icon: "HardHat", label: "Employee", href: "/home/employee-data" },
   { icon: "LogOut", label: <LogoutButton />, href: "/" },
 ];
 
 const Sidebaar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [userData, setUserData] = useState(null);
+  const {userData} = useUserData();
+  
 
   // Check if screen is mobile
   const checkMobile = () => window.innerWidth < 768;
@@ -36,21 +37,7 @@ const Sidebaar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      if (auth.currentUser) {
-        const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
-
-        if (userDoc.exists()) {
-          setUserData(userDoc.data());
-        } else {
-          console.log("No User Data Found SIDEBAAR");
-        }
-      }
-    };
-
-    fetchUserData();
-  }, []);
+  
 
   // Toggle sidebar
   const toggleSidebar = () => {

@@ -1,5 +1,6 @@
 import React from "react";
 import CollectionData from "./collectionData";
+import DailySales from "./dailySales";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       </div>
       
       <div className="">
+        <DailySales/>
         <CollectionData />
       </div>
     </div>

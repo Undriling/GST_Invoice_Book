@@ -3,32 +3,14 @@ import InvoiceHeader from "./invoiceHeader";
 import InvoiceBankDetails from "./invoiceBankDetails";
 import InvoiceCustomerDetails from "./invoiceCustomerDetails";
 import InvoiceItemTable from "./invoiceItemTable";
-import { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { auth, db } from "../../../service/firebase";
 import usePrintInvoice from "../../../hooks/usePrintInvoice";
+import useUserData from "../../../hooks/useUserData";
 
 const InvoiceDetails = () => {
   const location = useLocation();
-  const [userData, setUserData] = useState(null);
   const invoiceData = location.state?.invoice;
   const handlePrint = usePrintInvoice();
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      if (auth.currentUser) {
-        const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
-
-        if (userDoc.exists()) {
-          setUserData(userDoc.data());
-        } else {
-          console.log("No User Data Found SIDEBAAR");
-        }
-      }
-    };
-
-    fetchUserData();
-  }, []);
+  const { userData } = useUserData();
 
   if (!invoiceData) {
     return <p className="text-center text-lg">No invoice data found.</p>;
