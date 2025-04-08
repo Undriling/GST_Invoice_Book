@@ -26,6 +26,16 @@ const DeleteUserAccount = () => {
       );
 
       const qII = query(
+        collection(db, "paymentBalance"),
+        where("userId", "==", auth.currentUser.uid)
+      );
+
+      const qIII = query(
+        collection(db, "employees"),
+        where("userId", "==", auth.currentUser.uid)
+      );
+
+      const qIV = query(
         collection(db, "users"),
         where("uid", "==", auth.currentUser.uid)
       );
@@ -34,24 +44,41 @@ const DeleteUserAccount = () => {
 
       const snapshotII = await getDocs(qII);
 
+      const snapshotIII = await getDocs(qIII);
+
+      const snapshotIV = await getDocs(qIV);
+
       const invoicesDeletePromises = snapshot.docs.map((docSnap) =>
         deleteDoc(doc(db, "invoices", docSnap.id))
       );
 
-      const userDeletePromises = snapshotII.docs.map((docSnap) =>
-        deleteDoc(doc(db, "invoices", docSnap.id))
+      const paymentBalanceDeletePromises = snapshotII.docs.map((docSnap) =>
+        deleteDoc(doc(db, "paymentBalance", docSnap.id))
+      );
+
+      const employeesDeletePromises = snapshotIII.docs.map((docSnap) =>
+        deleteDoc(doc(db, "employees", docSnap.id))
+      );
+
+      const userDeletePromises = snapshotIV.docs.map((docSnap) =>
+        deleteDoc(doc(db, "users", docSnap.id))
       );
 
       await Promise.all(invoicesDeletePromises);
+
+      await Promise.all(paymentBalanceDeletePromises);
+
+      await Promise.all(employeesDeletePromises);
+
       await Promise.all(userDeletePromises);
 
       await signOut(auth);
-      navigate("signup");
+      navigate("/signup");
 
-      toast.success("All invoices have been deleted.");
+      toast.success("Your account have been deleted permanently.");
     } catch (error) {
-      console.error("Error deleting invoices:", error);
-      alert("Error deleting invoices.");
+      console.error("Error deleting account:", error);
+      toast.error("Error deleting account.");
     } finally {
       setLoading(false);
       setOpenDialog(false);

@@ -20,7 +20,7 @@ const Reports = () => {
         />
         <h2 className="text-3xl text-gray-600 -ml-4">
           {userData?.companyName
-            ? userData?.companyName + " Sales Report"
+            ? userData?.companyName + " Sales Reports"
             : "Sales Report By Mudra"}
         </h2>
       </div>

@@ -8,13 +8,14 @@ import SignUp from "./components/login_signup/signUp.jsx";
 import ViewInvoices from "./components/invoices/viewInvoices.jsx";
 import CreateInvoices from "./components/invoices/createInvoice/createInvoices.jsx";
 import Home from "./components/home/home.jsx";
-import ClientsData from "./components/Clients/clientsData.jsx";
 import ProtectedRoute from "./components/login_signup/protectedRoute.jsx";
 import InvoiceDetails from "./components/invoices/invoiceDetails/invoiceDetails.jsx";
 import Settings from "./settings/settings.jsx";
 import { Toaster } from "react-hot-toast";
 import Employee from "./components/employeeData/employee.jsx";
 import Reports from "./components/reports/reports.jsx";
+import BalancePayment from "./components/payments/balancePayment.jsx";
+import About from "./components/aboutMudra/about.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,11 +34,12 @@ const router = createBrowserRouter([
       { path: "home", element: <Home /> },
       { path: "viewinvoices", element: <ViewInvoices /> },
       { path: "createinvoice", element: <CreateInvoices /> },
-      { path: "clientsdata", element: <ClientsData /> },
+      { path: "about-medra-bill", element: <About /> },
       { path: "invoice-details", element: <InvoiceDetails /> },
       { path: "settings", element: <Settings /> },
-      { path: "employee-data", element: <Employee /> },
+      { path: "employees-data", element: <Employee /> },
       { path: "sales-reports", element: <Reports /> },
+      { path: "payments", element: <BalancePayment /> },
     ]
   },
 ]);

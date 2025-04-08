@@ -4,16 +4,15 @@ import { Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import LogoutButton from "../login_signup/logOutBtn";
 import useUserData from "../../hooks/useUserData";
 
-// Navigation items
 const navItems = [
   { icon: "Home", label: "Dashboard", href: "/home" },
   { icon: "FileText", label: "Invoices", href: "/home/viewinvoices" },
-  { icon: "Users", label: "Clients", href: "/home/clientsdata" },
   { icon: "Package", label: "Create Invoice", href: "/home/createinvoice" },
-  { icon: "CreditCard", label: "Payments", href: "/payments" },
+  { icon: "CreditCard", label: "Payments", href: "/home/payments" },
   { icon: "PieChart", label: "Reports", href: "/home/sales-reports" },
+  { icon: "Users", label: "Employees", href: "/home/employees-data" },
   { icon: "Settings", label: "Settings", href: "/home/settings" },
-  { icon: "HardHat", label: "Employee", href: "/home/employee-data" },
+  { icon: "Info", label: "About Mudra", href: "/home/about-medra-bill" },
   { icon: "LogOut", label: <LogoutButton />, href: "/" },
 ];
 

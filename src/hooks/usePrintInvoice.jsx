@@ -63,6 +63,7 @@ const usePrintInvoice = () => {
               .customerDetails p {margin-bottom: -12px;}
               .customerDetails .memoNo {margin-bottom: 30px;}
               .customerDetails {margin-top: 50px;}
+              .customerDetails div {margin-bottom: 20px;}
 
               .invoiceId h4 {margin-bottom: -12px;}
 
@@ -97,6 +98,7 @@ const usePrintInvoice = () => {
                 width: 100%;
                 border-collapse: collapse;
                 page-break-inside: avoid;
+                margin-top: 30px;
               }
   
               th, td {
