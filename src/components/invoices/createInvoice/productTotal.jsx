@@ -2,8 +2,8 @@ import React from "react";
 
 const ProductTotal = ({ products = [], total = 0 }) => {
   return (
-    <div className="max-w-4xl mx-auto p-4 bg-gray-100 shadow-lg rounded-lg mt-6">
-      <table className="w-full border-collapse border border-gray-300 text-left">
+    <div className="md:max-w-4xl overflow-x-auto mx-auto p-1 md:p-4 lg:p-4 bg-gray-100 shadow-lg rounded-lg mt-6">
+      <table className="min-w-full border-collapse border border-gray-300 text-center text-sm md:text-lg md:text-left">
         <thead>
           <tr className="bg-gray-200 text-gray-700">
             <th className="border border-gray-300 p-1 md:p-2">S. No</th>

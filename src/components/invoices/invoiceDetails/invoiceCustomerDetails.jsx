@@ -5,8 +5,8 @@ const InvoiceCustomerDetails = ({invoiceData}) => {
 
 
   return (
-    <div className="mt-4 text-gray-700 customerDetails">
-      <h2 className="font-extrabold text-[17px]">To,</h2>
+    <div className="mt-4 text-[11px] md:text-[16px] text-gray-700 customerDetails">
+      <h2 className="font-extrabold md:text-[17px] text-sm]">To,</h2>
       <p>
         <strong>Name:</strong> {invoiceData?.customerDetails?.to}
       </p>

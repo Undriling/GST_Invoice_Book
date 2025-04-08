@@ -5,7 +5,7 @@ const InvoiceItemTable = ({invoiceData}) => {
 
   return (
     <>
-      <table className="w-full border-collapse border border-black mt-4">
+      <table className="md:w-full w-screen text-[10px] md:text-[16px] border-collapse border border-black mt-4">
         <thead>
           <tr className="bg-[#f0f0f0] text-grey-700">
             <th className="border p-2">S.No</th>
@@ -39,7 +39,7 @@ const InvoiceItemTable = ({invoiceData}) => {
           ))}
         </tbody>
       </table>
-      <div className="flex justify-between mt-4 text-lg font-bold">
+      <div className="flex justify-between text-[12px] md:text-lg mt-4 text-lg font-bold">
         <p>Total:</p>
         <p className="text-gray-700">
           ₹ {invoiceData?.productsTotal.toFixed(2)}

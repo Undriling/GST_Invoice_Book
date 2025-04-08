@@ -18,10 +18,16 @@ const Settings = () => {
 
   return (
     <>
-      <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow mt-10">
-        <h1 className="text-2xl font-semibold mb-6 text-center text-gray-700">
+    <div className="flex justify-end -mb-5 md:hidden -mt-4"> 
+        <img
+          src="/src/assets/logo2.jpeg"
+          className="w-20 h-20 md:hidden block"
+        />
+      </div>
+      <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow mt-3 md:mt-10">
+        <h2 className="md:text-4xl text-3xl font-semibold mb-6 text-center text-gray-700">
           Account Settings
-        </h1>
+        </h2>
 
         {/* Profile Photo */}
         <UpdateImg photoURL={userData?.photoURL} />
@@ -94,7 +100,7 @@ const Settings = () => {
 
       <div className="flex justify-center items-center text-center bg-gray-600 max-w-3xl mx-auto p-6 rounded-lg shadow mt-10">
         <div className="my-3">
-          <p className="text-red-500 font-bold text-xl mb-5">
+          <p className="text-red-500 font-bold md:text-xl text-lg mb-5">
             This will permanently delete your <strong>all saved invoices</strong>.
           </p>
           <ResetAllInvoices />
@@ -103,7 +109,7 @@ const Settings = () => {
 
       <div className="flex justify-center items-center text-center bg-gray-600 max-w-3xl mx-auto p-6 rounded-lg shadow mt-10">
         <div className="my-3">
-          <p className="text-red-500 font-bold text-xl mb-5">
+          <p className="text-red-500 font-bold md:text-xl text-lg mb-5">
             This will permanently delete your <strong>account & all saved information and data</strong>.
           </p>
           <DeleteUserAccount />

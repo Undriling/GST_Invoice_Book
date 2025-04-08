@@ -2,8 +2,8 @@ import React from "react";
 
 const InvoiceBankDetails = ({ userData }) => {
   return (
-    <div className="flex justify-between rounded-lg mt-4 border bg-gray-50 bank&TC">
-      <div className="p-4 bankDetails">
+    <div className="flex justify-between rounded-lg text-[9px] md:text-[16px] mt-4 border bg-gray-50 bank&TC">
+      <div className="p-4 bankDetails w-[40%]">
         <h3 className="font-bold text-gray-700">Bank Details :-</h3>
         <p>
           Bank Name:{" "}
@@ -23,7 +23,7 @@ const InvoiceBankDetails = ({ userData }) => {
         </p>
       </div>
 
-      <div className="p-4 italic termsCon">
+      <div className="p-4 italic w-[60%] termsCon">
         <h3 className="font-bold text-gray-600">Terms & Condition :-</h3>
         <p>* All disputes subject to Seller's official Jurisdiction only.</p>
         <p>* Goods dispatched on customer's risk.</p>

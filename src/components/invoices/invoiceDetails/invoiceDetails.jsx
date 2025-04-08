@@ -23,15 +23,15 @@ const InvoiceDetails = () => {
   return (
     <>
       {/* Print Button */}
-      <div className="mt-4 text-right flex justify-end">
+      <div className="mt-4 text-right flex justify-end mb-3 md:mb-0">
         <button
           onClick={() => handlePrint("printable-area")}
-          className="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700 cursor-pointer">
+          className="bg-pink-600 text-white md:px-4 md:py-2 rounded-md hover:bg-pink-700 cursor-pointer">
           Print Invoice
         </button>
       </div>
 
-      <div className="flex justify-center p-5 min-h-screen">
+      <div className="flex justify-center md:p-5 min-h-screen">
         <div
           id="printable-area"
           className="bg-white shadow-lg p-6 rounded-lg w-full max-w-3xl">
@@ -49,7 +49,7 @@ const InvoiceDetails = () => {
             <InvoiceBankDetails userData={userData} />
 
             {/* Seal & Signature */}
-            <div className="flex justify-between items-center mt-10 invoiceFooter">
+            <div className="flex justify-between text-[10px] md:text-[16px] items-center mt-10 invoiceFooter">
               <div>
                 <div className="border-t border-gray-500 w-40 mt-2"></div>
                 <p className="text-gray-600">Authorized Signatory</p>

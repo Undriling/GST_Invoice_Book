@@ -50,7 +50,7 @@ const UpdateImg = ({ photoURL }) => {
       <img
         src={preview}
         alt="Profile"
-        className="w-40 h-40 rounded-full object-fill mx-auto mb-2 cursor-pointer"
+        className="w-40 h-40 rounded-full object-fill mx-auto mb-2 cursor-pointer border"
         onClick={handlePhotoClick}
         title="Click to change photo"
       />

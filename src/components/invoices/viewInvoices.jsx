@@ -61,10 +61,16 @@ const ViewInvoices = () => {
     }
   };
 
-
   return (
     <div>
-      <h1>Invoices</h1>
+      <div className="flex justify-end -mb-5 md:hidden -mt-4"> 
+        <img
+          src="/src/assets/logo2.jpeg"
+          className="w-20 h-20 md:hidden block"
+        />
+      </div>
+      <h2 className="text-3xl text-gray-700 md:text-5xl">Invoices</h2>
+
       {invoices.length > 0 && (
         <div className="flex gap-5">
           <div className="flex items-center text-gray-600 text-sm">
@@ -85,11 +91,11 @@ const ViewInvoices = () => {
         invoices.map((data, index) => (
           <div
             key={data.id}
-            className="flex justify-between bg-white my-3  items-center p-2 rounded-2xl">
-            <p className="w-[7%]">{index + 1}.</p>
-            <p className="w-[23%]">{data.customerDetails?.to}</p>
+            className="flex justify-between bg-white my-3 items-center p-1 md:p-2 rounded-2xl">
+            <p className="md:w-[7%] w-[15%]">{index + 1}.</p>
+            <p className="md:w-[23%] w-[100%]">{data.customerDetails?.to}</p>
             <h2 className="px-2">-</h2>
-            <p className="w-[25%] text-center">
+            <p className="md:w-[25%] w-[100%] text-center">
               {data.date
                 ? new Date(data?.date?.seconds * 1000).toLocaleDateString(
                     "en-IN",
@@ -101,18 +107,25 @@ const ViewInvoices = () => {
                   )
                 : ""}
             </p>
-            <h2 className="px-2">-</h2>
-            <p className="w-[27%] text-center">
+            <h2 className="px-2  md:block hidden">-</h2>
+            <p className="w-[27%] text-center  md:block hidden">
               📍{data.customerDetails?.address}
             </p>
             <h2 className="px-2">-</h2>
-            <p className="w-[40%] text-center">
+            <p className="md:w-[40%] w-[100%] text-center">
               ₹ {data.productsTotal?.toFixed(2)}
             </p>
-            <h2 className="px-1 text-blue-600">|</h2>
+            <h2 className="px-1 md:pl-0 pl-6 text-blue-600">|</h2>
 
             <button className="text-[#8046FD] font-extrabold text-lg hover:text-blue-700">
-              <FileText className="w-6 h-6" onClick={() => navigate("/home/invoice-details", { state: { invoice: data } })}/>
+              <FileText
+                className="w-6 h-6"
+                onClick={() =>
+                  navigate("/home/invoice-details", {
+                    state: { invoice: data },
+                  })
+                }
+              />
             </button>
 
             <button
