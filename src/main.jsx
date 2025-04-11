@@ -15,7 +15,8 @@ import { Toaster } from "react-hot-toast";
 import Employee from "./components/employeeData/employee.jsx";
 import Reports from "./components/reports/reports.jsx";
 import BalancePayment from "./components/payments/balancePayment.jsx";
-import About from "./components/aboutMudra/about.jsx";
+import About from "./components/custom/about.jsx";
+import Profile from "./components/custom/profile.jsx"
 
 const router = createBrowserRouter([
   {
@@ -34,12 +35,24 @@ const router = createBrowserRouter([
       { path: "home", element: <Home /> },
       { path: "viewinvoices", element: <ViewInvoices /> },
       { path: "createinvoice", element: <CreateInvoices /> },
-      { path: "about-medra-bill", element: <About /> },
       { path: "invoice-details", element: <InvoiceDetails /> },
       { path: "settings", element: <Settings /> },
       { path: "employees-data", element: <Employee /> },
       { path: "sales-reports", element: <Reports /> },
       { path: "payments", element: <BalancePayment /> },
+      { 
+        path: "about-mudra-bill", 
+        children: [
+          { 
+            index: true,
+            element: <About />
+          },
+          { 
+            path: "profile", 
+            element: <Profile />
+          }
+        ]
+      },
     ]
   },
 ]);

@@ -12,15 +12,14 @@ const navItems = [
   { icon: "PieChart", label: "Reports", href: "/home/sales-reports" },
   { icon: "Users", label: "Employees", href: "/home/employees-data" },
   { icon: "Settings", label: "Settings", href: "/home/settings" },
-  { icon: "Info", label: "About Mudra", href: "/home/about-medra-bill" },
+  { icon: "Info", label: "About Mudra", href: "/home/about-mudra-bill" },
   { icon: "LogOut", label: <LogoutButton />, href: "/" },
 ];
 
 const Sidebaar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const {userData} = useUserData();
-  
+  const { userData } = useUserData();
 
   // Check if screen is mobile
   const checkMobile = () => window.innerWidth < 768;
@@ -35,8 +34,6 @@ const Sidebaar = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  
 
   // Toggle sidebar
   const toggleSidebar = () => {
