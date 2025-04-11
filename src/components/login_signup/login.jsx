@@ -54,7 +54,7 @@ const Login = () => {
     <div className="flex min-h-screen w-screen flex-col items-center justify-center bg-gray-300 p-4">
       <div className="">
         <img
-          src="../../src/assets/logo.jpeg"
+          src="/logo.jpeg"
           alt="Logo"
           className="w-72 mb-6"
         />
@@ -63,7 +63,7 @@ const Login = () => {
         {/* Left Side*/}
         <div className="md:w-1/2 hidden md:block">
           <img
-            src="../../src/assets/login.jpeg"
+            src="/login.jpeg"
             alt="Login"
             className="w-full h-full object-cover"
           />

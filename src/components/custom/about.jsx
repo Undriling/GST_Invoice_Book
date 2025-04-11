@@ -6,7 +6,7 @@ const About = () => {
     <>
       <div className="flex justify-end md:hidden -mb-2 -mt-6">
         <img
-          src="/src/assets/logo2.jpeg"
+          src="/logo2.jpeg"
           className="w-20 h-20 md:hidden block"
         />
       </div>
@@ -24,7 +24,7 @@ const About = () => {
           <div className="mt-12 flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
               <img
-                src="/src/assets/about.jpeg"
+                src="/about.jpeg"
                 alt="Invoice Management"
                 className="rounded-xl shadow-lg"
               />

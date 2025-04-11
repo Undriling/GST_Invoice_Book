@@ -10,7 +10,7 @@ const InvoiceHeader = ({ invoiceData, userData }) => {
       <div className="flex justify-between items-center border-b pb-4">
         <div className="flex items-center gap-4">
           <img
-            src={userData ? userData.photoURL : "../../src/assets/logo.jpeg"}
+            src={userData ? userData.photoURL : "/logo.jpeg"}
             alt="User"
             className="md:w-25 w-18 h-18 md:h-25 rounded-full border"
           />

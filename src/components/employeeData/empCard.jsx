@@ -4,7 +4,7 @@ const EmployeeCard = ({ employee }) => {
   return (
     <div className="border rounded-md shadow p-4 bg-white flex gap-4">
       <img
-        src={employee.photoUrl ? employee.photoUrl : "/src/assets/logo2.jpeg"}
+        src={employee.photoUrl ? employee.photoUrl : "/logo2.jpeg"}
         alt="Employee"
         className="w-20 h-20 object-fill rounded-full border"
       />

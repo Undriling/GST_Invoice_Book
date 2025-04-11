@@ -98,7 +98,7 @@ const DeleteUserAccount = () => {
           <div className="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full">
             <div className="flex justify-center items-center">
               <img
-                src="/src/assets/logo.jpeg"
+                src="/logo.jpeg"
                 alt="Mudra Logo"
                 className="w-70 h-30"
               />

@@ -14,7 +14,7 @@ const Reports = () => {
     <>
       <div className="flex justify-center items-center">
         <img
-          src="/src/assets/logo2.jpeg"
+          src="/logo2.jpeg"
           alt="Mudra Logo"
           className="md:w-30 md:h-30 w-18 h-18"
         />

@@ -20,7 +20,7 @@ const Profile = () => {
     <>
       <div className="flex justify-end md:hidden -mb-2 -mt-6">
         <img
-          src="/src/assets/logo2.jpeg"
+          src="/logo2.jpeg"
           className="w-20 h-20 md:hidden block"
         />
       </div>
@@ -40,7 +40,7 @@ const Profile = () => {
             className="relative w-full h-80 md:h-[650px] rounded-xl overflow-hidden"
             whileHover={{ scale: 0.98 }}>
             <img
-              src="/src/assets/profile.svg"
+              src="/profile.svg"
               alt="Maker"
               loading="lazy"
               className="w-full h-full object-cover cursor-pointer"

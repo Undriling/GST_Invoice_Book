@@ -76,7 +76,7 @@ const ProductForm = () => {
   return (
     <div className="md:max-w-4xl overflow-x-auto md:mx-auto p-1 md:p-6 lg:p-4 bg-gray-100 shadow-lg rounded-lg">
       <div className="sm:block md:hidden flex justify-end">
-        <img src="/src/assets/logo2.jpeg" className="w-15 h-15"/>
+        <img src="/logo2.jpeg" className="w-15 h-15"/>
       </div>
 
       <h2 className="md:text-xl text-lg font-bold text-gray-700 mb-4">New Invoice</h2>

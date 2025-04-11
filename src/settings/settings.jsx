@@ -20,7 +20,7 @@ const Settings = () => {
     <>
     <div className="flex justify-end -mb-5 md:hidden -mt-4"> 
         <img
-          src="/src/assets/logo2.jpeg"
+          src="/logo2.jpeg"
           className="w-20 h-20 md:hidden block"
         />
       </div>
