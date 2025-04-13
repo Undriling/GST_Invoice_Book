@@ -5,7 +5,7 @@
 
 A modern, full-featured web app to generate and print GST-compliant invoices, manage employees, and track sales—all in real-time with a clean and responsive UI.
 
-* 🚀 Features
+ 🚀 Features
 - 🔐 Google Authentication – Secure Sign In/Out using Firebase Authentication.
   
 - 🧾 GST Invoice Generation & Download – Create and print professional invoices using iframe-based print rendering.
@@ -16,7 +16,7 @@ A modern, full-featured web app to generate and print GST-compliant invoices, ma
 
 - 📅 Monthly Sales Charts – Visualize month-wise performance using Chart.js.
 
-* ⚙️ Tech Stack
+ ⚙️ Tech Stack
 - Frontend: React.js, Tailwind CSS, Shadcn UI
 - Authentication & Database: Firebase (Auth, Firestore, Storage)
 - Charts & Reporting: Chart.js
