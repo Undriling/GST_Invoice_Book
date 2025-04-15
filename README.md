@@ -1,3 +1,29 @@
+# 🧾 GST Invoice Generator – Mudra Billing System 💸
+- Live Link :-  https://mudrabillingsystem.netlify.app
+
+# About 
+
+A modern, full-featured web app to generate and print GST-compliant invoices, manage employees, and track sales—all in real-time with a clean and responsive UI.
+
+ 🚀 Features
+- 🔐 Google Authentication – Secure Sign In/Out using Firebase Authentication.
+  
+- 🧾 GST Invoice Generation & Download – Create and print professional invoices using iframe-based print rendering.
+
+- 👨‍💼 Employee Management – Add, view, and manage employee details linked to the user's account.
+
+- 📊 Sales Reporting – Auto-generate detailed invoice-based sales reports.
+
+- 📅 Monthly Sales Charts – Visualize month-wise performance using Chart.js.
+
+ ⚙️ Tech Stack
+- Frontend: React.js, Tailwind CSS, Shadcn UI
+- Authentication & Database: Firebase (Auth, Firestore, Storage)
+- Charts & Reporting: Chart.js
+- Printing: HTML iframe injection
+- PDF/Print Optimization: Fully styled print layout with exact color rendering and layout control
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
