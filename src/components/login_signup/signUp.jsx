@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -30,43 +31,28 @@ const SignUp = () => {
 
   const registerSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(
-      email,
-      phoneNo,
-      password,
-      displayName,
-      ownerName,
-      gstNo,
-      file,
-      otherTaxName,
-      otherTaxNo
-    );
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed up
         const user = userCredential.user;
         const date = new Date().getTime();
         const storageRef = ref(storage, `${displayName + date}`);
-        console.log(user);
+        // console.log(user);
 
-        // upload logo to firestorage
         uploadBytesResumable(storageRef, file).then((res) => {
-          console.log(res);
-          // fetch photo url from firestorage
-          getDownloadURL(storageRef).then((downloadUrl) => {
-            console.log(downloadUrl);
+          // console.log(res);
 
-            // update usercredential json details
-            updateProfile(userCredential.user, {
+          getDownloadURL(storageRef).then((downloadUrl) => {
+            // console.log(downloadUrl);
+
+            updateProfile(user, {
               displayName: displayName,
               phoneNumber: phoneNo,
               photoURL: downloadUrl,
             });
 
-            // User Data To Firebase Database -> users
-            setDoc(doc(db, "users", userCredential.user.uid), {
-              uid: userCredential.user.uid,
+            setDoc(doc(db, "users", user.uid), {
+              uid: user.uid,
               companyName: displayName,
               ownerName: ownerName,
               email: email,
@@ -84,16 +70,14 @@ const SignUp = () => {
               photoURL: downloadUrl,
             });
 
+            toast.success("Account Created Successfully...")
             navigate("/");
           });
-          console.log(res);
+          // console.log(res);
         });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        // ..
+        toast.error(error.code)
       });
   };
 

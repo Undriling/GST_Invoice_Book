@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../service/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import toast from "react-hot-toast";
 
 const useUserData = () => {
   const [userData, setUserData] = useState(null);
@@ -13,7 +14,7 @@ const useUserData = () => {
         if (userDoc.exists()) {
           setUserData(userDoc.data());
         } else {
-          console.log("No User Data Found SIDEBAAR");
+          toast.error("No user Data Found!");
         }
       }
     };

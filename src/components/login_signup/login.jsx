@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { auth, db } from "../../service/firebase";
 import { useNavigate } from "react-router";
 import { doc, getDoc } from "firebase/firestore";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,30 +23,24 @@ const Login = () => {
 
   const loginSubmitHandler = async (e) => {
     e.preventDefault();
-
+    
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password)
-
+      
+      toast.success("Loged In Successfully")
       const user = userCredential.user
       navigate("/home");
       const userDoc = await getDoc(doc(db, 'users', user.uid))
 
       if (userDoc.exists()) {
-        console.log("User Data", userDoc.data())
+        // console.log("User Data", userDoc.data())
+        toast.success("Fetched user's data")
       }
       else {
-        console.log("No user Data Found!")
+        toast.success("No user Data Found!")
       }
-        // })
-        // .catch((error) => {
-        //   const errorCode = error.code;
-        //   const errorMessage = error.message;
-        //   console.log(errorCode, errorMessage);
-        // });
     } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
+      toast.error(error.code)
     }
 
   };

@@ -11,14 +11,14 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
       if (!currentUser) {
-        navigate("/"); // Redirect to login if not authenticated
+        navigate("/");
       } else {
         setUser(currentUser);
       }
       setLoading(false);
     });
 
-    return () => unsubscribe(); // Cleanup subscription on unmount
+    return () => unsubscribe();
   }, [navigate]);
 
   if (loading) return <Loading/>

@@ -1,8 +1,8 @@
 import React from "react";
 
 const InvoiceHeader = ({ invoiceData, userData }) => {
-  console.log("User Data details", userData);
-  console.log("Invoice Data", invoiceData);
+  // console.log("User Data details", userData);
+  // console.log("Invoice Data", invoiceData);
 
   return (
     <>

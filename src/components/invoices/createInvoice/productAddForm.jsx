@@ -56,8 +56,8 @@ const ProductForm = () => {
   };
 
   const saveData = async () => {
-    console.log("Customer Details:", customer);
-    console.log("Products:", products);
+    // console.log("Customer Details:", customer);
+    // console.log("Products:", products);
     const data = await addDoc(collection(db, "invoices"), {
       date: Timestamp.fromDate(new Date()),
       customerDetails: updatedCustomer,
@@ -69,7 +69,7 @@ const ProductForm = () => {
     await updateDoc(doc(db, "invoices", data.id), {
       id: data.id, 
     });
-    console.log(data);
+    // console.log(data);
     navigate("/home/viewinvoices");
   };
 

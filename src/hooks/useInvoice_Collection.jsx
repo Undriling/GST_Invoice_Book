@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../service/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import toast from "react-hot-toast";
 
 const useInvoice_Collection = () => {
   const [invoices, setInvoices] = useState([]);
@@ -29,12 +30,12 @@ const useInvoice_Collection = () => {
         ...doc.data(),
       }));
 
-      console.log("User Invoice Details", data);
+      // console.log("User Invoice Details", data);
 
       setInvoices(data);
       invoicesSalesReports(data);
     } catch (error) {
-      console.log(error);
+      toast.error(error.code + " : " + error.message);
     } finally {
       setLoading(false);
     }

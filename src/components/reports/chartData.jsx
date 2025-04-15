@@ -10,7 +10,10 @@ const ChartData = () => {
   useEffect(() => {
     if (!invoices.length || !chartRef.current) return;
 
-    if (chartInstance.current && chartInstance.current instanceof Chart) {
+    if (
+      chartInstance.current &&
+      chartInstance.current instanceof Chart
+    ) {
       chartInstance.current.destroy();
     }
 
@@ -19,7 +22,7 @@ const ChartData = () => {
     const ctx = chartRef.current.getContext("2d");
 
     chartInstance.current = new Chart(ctx, {
-      type: "bar",
+      type: "line",
       data: {
         labels: [
           "JAN",
@@ -37,7 +40,9 @@ const ChartData = () => {
         ],
         datasets: [
           {
-            label: "Month-Wise Sales in " + new Date().getFullYear(),
+            label:
+              "Month-Wise Sales in " +
+              new Date().getFullYear(),
             data: monthWiseTotal,
             backgroundColor: [
               "rgba(255, 99, 132, 0.6)",
@@ -47,14 +52,24 @@ const ChartData = () => {
               "rgba(153, 102, 255, 0.6)",
               "rgba(255, 159, 64, 0.6)",
             ],
-            borderColor: "rgba(255, 255, 255, 0.8)",
-            borderWidth: 1,
+            borderColor: "rgb(75, 192, 192)",
+            tension: 0.1,
+            borderWidth: 2,
           },
         ],
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        animations: {
+          tension: {
+            duration: 1000,
+            easing: "linear",
+            from: 1,
+            to: 0,
+            loop: true,
+          },
+        },
         scales: {
           y: {
             beginAtZero: true,
@@ -67,7 +82,10 @@ const ChartData = () => {
     });
 
     return () => {
-      if (chartInstance.current && chartInstance.current instanceof Chart) {
+      if (
+        chartInstance.current &&
+        chartInstance.current instanceof Chart
+      ) {
         chartInstance.current.destroy();
       }
     };
@@ -82,7 +100,8 @@ const ChartData = () => {
 
       const date = new Date(timestamp * 1000);
       const monthIndex = date.getMonth();
-      monthlyTotals[monthIndex] += invoice.productsTotal || 0;
+      monthlyTotals[monthIndex] +=
+        invoice.productsTotal || 0;
     });
 
     return monthlyTotals;
@@ -93,7 +112,9 @@ const ChartData = () => {
       {loading ? (
         <p>Loading chart...</p>
       ) : invoices.length === 0 ? (
-        <p className="text-gray-500 text-lg">No invoices to display</p>
+        <p className="text-gray-500 text-lg">
+          No invoices to display reports.
+        </p>
       ) : (
         <canvas ref={chartRef} />
       )}

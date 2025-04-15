@@ -11,6 +11,7 @@ import {
 import { FileText, TrashIcon } from "lucide-react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 const ViewInvoices = () => {
   const navigate = useNavigate();
@@ -42,9 +43,9 @@ const ViewInvoices = () => {
       }));
 
       setInvoices(data);
-      console.log("User Invoice Details", data);
+      // console.log("User Invoice Details", data);
     } catch (error) {
-      console.log(error);
+      toast.error(error.code+" : "+error.message)
     }
   };
 

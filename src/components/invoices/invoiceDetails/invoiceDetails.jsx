@@ -16,13 +16,8 @@ const InvoiceDetails = () => {
     return <p className="text-center text-lg">No invoice data found.</p>;
   }
 
-  //   console.log("Invoice details", invoiceData);
-
-  console.log(handlePrint, "Clicked to Print");
-
   return (
     <>
-      {/* Print Button */}
       <div className="mt-4 text-right flex justify-end mb-3 md:mb-0">
         <button
           onClick={() => handlePrint("printable-area")}
