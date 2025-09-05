@@ -10,7 +10,9 @@ const ProductTotal = ({ products = [], total = 0 }) => {
             <th className="border border-gray-300 p-1 md:p-2">Product Name</th>
             <th className="border border-gray-300 p-1 md:p-2">Price</th>
             <th className="border border-gray-300 p-1 md:p-2">Quantity</th>
+            <th className="border border-gray-300 p-1 md:p-2">Amount</th>
             <th className="border border-gray-300 p-1 md:p-2">GST %</th>
+            <th className="border border-gray-300 p-1 md:p-2">GST Amt.</th>
             <th className="border border-gray-300 p-1 md:p-2">Total Price</th>
           </tr>
         </thead>
@@ -25,7 +27,9 @@ const ProductTotal = ({ products = [], total = 0 }) => {
                 ₹ {product.price.toFixed(2)}
               </td>
               <td className="border border-gray-300 p-1 md:p-2">{product.quantity}</td>
-              <td className="border border-gray-300 p-1 md:p-2">{product.gstPercentage}</td>
+              <th className="border border-gray-300 p-1 md:p-2">{product.price * product.quantity}</th>
+              <td className="border border-gray-300 p-1 md:p-2">{product.gstPercentage} %</td>
+              <td className="border border-gray-300 p-1 md:p-2">{((product.price * product.quantity) * (product.gstPercentage / 100)).toFixed(2)}</td>
               <td className="border border-gray-300 p-1 md:p-2">
                 ₹ {((product.price * product.quantity) + ((product.price * product.quantity) * (product.gstPercentage / 100))).toFixed(2)}
               </td>
