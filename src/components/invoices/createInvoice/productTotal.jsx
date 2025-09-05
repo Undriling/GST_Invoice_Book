@@ -24,7 +24,7 @@ const ProductTotal = ({ products = [], total = 0 }) => {
                 {product.productName.toUpperCase()}
               </td>
               <td className="border border-gray-300 p-1 md:p-2">
-                ₹ {product.price.toFixed(2)}
+                 {product.price.toFixed(2)}
               </td>
               <td className="border border-gray-300 p-1 md:p-2">{product.quantity}</td>
               <th className="border border-gray-300 p-1 md:p-2">{product.price * product.quantity}</th>
