@@ -34,7 +34,7 @@ const InvoiceItemTable = ({ invoiceData }) => {
                   {(product.price * product.quantity).toFixed(2)}
                 </td>
                 <td className="border p-2">
-                  {product?.gstPercentage}
+                  {product?.gstPercentage} %
                 </td>
                 <td className="border p-2">
                   {(
