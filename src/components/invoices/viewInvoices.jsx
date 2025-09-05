@@ -70,7 +70,7 @@ const ViewInvoices = () => {
           className="w-20 h-20 md:hidden block"
         />
       </div>
-      <h2 className="text-3xl text-gray-700 md:text-5xl">Invoices</h2>
+      <h2 className="text-3xl text-gray-700 md:text-[44px]">Invoices</h2>
 
       {invoices.length > 0 && (
         <div className="flex gap-5">

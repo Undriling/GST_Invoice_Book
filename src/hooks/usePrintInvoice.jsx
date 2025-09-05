@@ -1,6 +1,7 @@
 const usePrintInvoice = () => {
   const handlePrint = (elementId = "printable-area") => {
-    const printContents = document.getElementById(elementId)?.innerHTML;
+    const printContents =
+      document.getElementById(elementId)?.innerHTML;
 
     if (!printContents) {
       alert("Nothing to print.");
@@ -15,7 +16,9 @@ const usePrintInvoice = () => {
     iframe.style.border = "none";
     document.body.appendChild(iframe);
 
-    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    const doc =
+      iframe.contentDocument ||
+      iframe.contentWindow.document;
     doc.open();
     doc.write(`
         <html>
@@ -55,8 +58,8 @@ const usePrintInvoice = () => {
 
               .companyData {margin-left: 10px; margin-top: -20px;}
 
-              .companyData h2 {margin-bottom: -15px;}
-              .companyData h3 {margin-bottom: -15px;}
+              .companyData h2 {margin-bottom: -15px; font-size: 24px;}
+              .companyData h3 {margin-bottom: -15px; font-weight: 500; font-size: 16px;}
               .companyData p {margin-bottom: -12px;}
 
               .customerDetails h2 {font-size: 16px; margin-bottom: -10px;}
@@ -119,6 +122,7 @@ const usePrintInvoice = () => {
                 text-align: center;
               }
             .text-2xl {font-size: 24px;}
+            .text-lg {font-size: 18px;}
 
             .border-b {
                 border-bottom-style: var(--tw-border-style);
@@ -146,14 +150,45 @@ const usePrintInvoice = () => {
               .w-40 {
                 width: 160px;
               }
+
+              .mb-3 {
+                  margin-bottom: 12px;
+              }
+
+              .mt-4 {
+                  margin-top: 16px;
+              }
+              
+              .mt-2 {
+                  margin-top: 8px;
+              }
+              
+              .mt-0 {
+                  margin-top: 0px;
+              }
+
+              .items-center {
+                  align-items: center;
+              }
+
+              .justify-center {
+                  justify-content: center;
+              }
+
+              .text-sm {
+                  font-size: 15px;
+              }
+
             </style>
           </head>
           <body onload="window.print(); setTimeout(() => window.close(), 100);">
-            ${printContents}
+            <div id="printable-area">
+              ${printContents}
+            </div>
           </body>
         </html>
       `);
-      doc.close();
+    doc.close();
   };
 
   return handlePrint;

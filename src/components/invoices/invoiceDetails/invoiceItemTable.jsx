@@ -1,8 +1,6 @@
 import React from "react";
 
-
-const InvoiceItemTable = ({invoiceData}) => {
-
+const InvoiceItemTable = ({ invoiceData }) => {
   return (
     <>
       <table className="md:w-full w-screen text-[10px] md:text-[16px] border-collapse border border-black mt-4">
@@ -12,31 +10,51 @@ const InvoiceItemTable = ({invoiceData}) => {
             <th className="border p-2">Product Name</th>
             <th className="border p-2">Price</th>
             <th className="border p-2">Quantity</th>
+            <th className="border p-2">Amount</th>
             <th className="border p-2">GST %</th>
+            <th className="border p-2">GST Amt.</th>
             <th className="border p-2">Total</th>
           </tr>
         </thead>
         <tbody>
-          {invoiceData?.productDetails.map((product, index) => (
-            <tr key={index} className="text-center">
-              <td className="border p-2">{index + 1}</td>
-              <td className="border p-2">
-                {product?.productName?.toUpperCase()}
-              </td>
-              <td className="border p-2">₹ {product?.price}</td>
-              <td className="border p-2">{product?.quantity}</td>
-              <td className="border p-2">{product?.gstPercentage}</td>
-              <td className="border p-2">
-                ₹{" "}
-                {(
-                  product.price * product.quantity +
-                  product.price *
+          {invoiceData?.productDetails.map(
+            (product, index) => (
+              <tr key={index} className="text-center">
+                <td className="border p-2">{index + 1}</td>
+                <td className="border p-2">
+                  {product?.productName?.toUpperCase()}
+                </td>
+                <td className="border p-2">
+                  {(product?.price*1).toFixed(2)}
+                </td>
+                <td className="border p-2">
+                  {product?.quantity}
+                </td>
+                <td className="border p-2">
+                  {(product.price * product.quantity).toFixed(2)}
+                </td>
+                <td className="border p-2">
+                  {product?.gstPercentage}
+                </td>
+                <td className="border p-2">
+                  {(
+                    product.price *
                     product.quantity *
                     (product.gstPercentage / 100)
-                ).toFixed(2)}
-              </td>
-            </tr>
-          ))}
+                  ).toFixed(2)}
+                </td>
+                <td className="border p-2">
+                  {/* ₹{" "} */}
+                  {(
+                    product.price * product.quantity +
+                    product.price *
+                      product.quantity *
+                      (product.gstPercentage / 100)
+                  ).toFixed(2)}
+                </td>
+              </tr>
+            )
+          )}
         </tbody>
       </table>
       <div className="flex justify-between text-[12px] md:text-lg mt-4 text-lg font-bold">

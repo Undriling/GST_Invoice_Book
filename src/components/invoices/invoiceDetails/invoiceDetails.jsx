@@ -13,7 +13,11 @@ const InvoiceDetails = () => {
   const { userData } = useUserData();
 
   if (!invoiceData) {
-    return <p className="text-center text-lg">No invoice data found.</p>;
+    return (
+      <p className="text-center text-lg">
+        No invoice data found.
+      </p>
+    )
   }
 
   return (
@@ -21,7 +25,7 @@ const InvoiceDetails = () => {
       <div className="mt-4 text-right flex justify-end mb-3 md:mb-0">
         <button
           onClick={() => handlePrint("printable-area")}
-          className="bg-pink-600 text-white md:px-4 md:py-2 rounded-md hover:bg-pink-700 cursor-pointer">
+          className="bg-blue-500 text-white md:px-4 md:py-2 rounded-md hover:bg-blue-400 hover:font-bold cursor-pointer">
           Print Invoice
         </button>
       </div>
@@ -31,12 +35,20 @@ const InvoiceDetails = () => {
           id="printable-area"
           className="bg-white shadow-lg p-6 rounded-lg w-full max-w-3xl">
           {/* Header */}
-          <InvoiceHeader invoiceData={invoiceData} userData={userData} />
+          <InvoiceHeader
+            invoiceData={invoiceData}
+            userData={userData}
+          />
 
           {/* Customer Details */}
-          <InvoiceCustomerDetails invoiceData={invoiceData} />
+          <div className="flex">
+            <InvoiceCustomerDetails
+              invoiceData={invoiceData}
+            />
+            {/* <QR_Code userData={userData}/> */}
+          </div>
 
-          <div className="mt-4">
+          <div className="mt-4 p-5">
             {/* Product Table */}
             <InvoiceItemTable invoiceData={invoiceData} />
 
@@ -46,12 +58,22 @@ const InvoiceDetails = () => {
             {/* Seal & Signature */}
             <div className="flex justify-between text-[10px] md:text-[16px] items-center mt-10 invoiceFooter">
               <div>
-                <div className="border-t border-gray-500 w-40 mt-2"></div>
-                <p className="text-gray-600">Authorized Signatory</p>
+                {/* <div className="border-t border-gray-500 w-40 mt-2"></div>
+                <p className="text-gray-600">Authorized Seal</p> */}
               </div>
               <div>
-                <div className="border-t border-gray-500 w-40 mt-2"></div>
-                <p className="text-gray-600">Authorized Seal</p>
+                <div className="flex items-center justify-center">
+                  <h2 className="text-sm font-bold mb-3">
+                    For, {userData?.companyName}
+                  </h2>
+                </div>
+                <div className="border-t border-gray-500 w-40 mt-4"></div>
+                <div className="flex">
+                  <p className="text-gray-600 mt-0">
+                    Authorized Signatory
+                  </p>
+                </div>
+                
               </div>
             </div>
           </div>
