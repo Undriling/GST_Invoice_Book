@@ -19,7 +19,7 @@ const InvoiceCustomerDetails = ({invoiceData}) => {
 
       {invoiceData?.customerDetails?.gstNo && (
         <p>
-          <strong>GST No:</strong> {invoiceData?.customerDetails?.gstNo}
+          <strong>GSTIN :</strong> {invoiceData?.customerDetails?.gstNo}
         </p>
       )}
 

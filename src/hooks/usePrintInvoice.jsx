@@ -75,6 +75,18 @@ const usePrintInvoice = () => {
               .bankDetails h3 {margin-bottom: -12px;}
               .bankDetails p {margin-bottom: -12px;}
 
+              .mt-8 {
+                  margin-top: 32px;
+              }
+
+              .rounded-lg {
+                  border-radius: 4px;
+              }
+
+              .p-4 {
+                  padding: 20px;
+              }
+
               .termsCon h3 {margin-bottom: -12px;} 
               .termsCon p {margin-bottom: -12px;} 
 
@@ -124,9 +136,22 @@ const usePrintInvoice = () => {
             .text-2xl {font-size: 24px;}
             .text-lg {font-size: 18px;}
 
-            .border-b {
-                border-bottom-style: var(--tw-border-style);
-                border-bottom-width: 1px;
+
+            .text-gray-500 {
+                color: #6a7282;
+            }
+
+            .text-gray-600 {
+                color: #4a5565 ;
+            }
+
+            .text-gray-700 {
+                color: #364153;
+            }
+
+            .text-2xl {
+                font-size: 24px;
+                line-height: var(--tw-leading, var(--text-2xl--line-height) /* calc(2 / 1.5) ≈ 1.3333 */);
             }
 
             .pb-4 {

@@ -27,7 +27,8 @@ const InvoiceHeader = ({ invoiceData, userData }) => {
           </div>
         </div>
         <div className="text-center invoiceId">
-          <p className="font-bold text-gray-700 text-sm md:text-2xl">INVOICE</p>
+          <p className="font-bold text-gray-700 text-2xl">TAX INVOICE</p>
+          <h4 className="font-bold text-gray-500 text-[12px]">(Original For Recipient)</h4>
           <h4 className="md:text-[15px] text-[12px] text-gray-600">
             Invoice Id: {invoiceData?.id?.slice(0, 6)?.toUpperCase()}
           </h4>
