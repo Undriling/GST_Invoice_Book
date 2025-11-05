@@ -77,6 +77,11 @@ const Settings = () => {
           value={userData?.bankDetails?.bankName}
         />
         <UpdateInput
+          label="A/C Name"
+          field="bankDetails.acName"
+          value={userData?.bankDetails?.acName}
+        />
+        <UpdateInput
           label="Account Number"
           field="bankDetails.bankACNo"
           value={userData?.bankDetails?.bankACNo}
